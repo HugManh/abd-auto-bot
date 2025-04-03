@@ -1,0 +1,8 @@
+# dependencies
+/node_modules
+
+# misc
+.env*
+
+npm-debug.log*
+package-lock
