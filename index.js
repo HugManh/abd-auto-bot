@@ -22,21 +22,25 @@ async function sendMessage(message) {
     }
 }
 
-// 8h15
-cron.schedule('30 8 * * *', () => {
+// Gửi lời chào khi bot khởi động
+// sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
+
+// 08:30 sáng, từ thứ 2 đến thứ 6
+cron.schedule('30 8 * * 1-5', () => {
     const dayOfMonth = moment().date();
-    const quote = quotes[dayOfMonth - 1] || 'Chúc anh em một ngày làm việc hiệu quả!`:';
-    sendMessage(quote);
+    const quote = quotes[dayOfMonth - 1] || 'Không có con đường nào dẫn đến thành công mà không có nỗ lực và công sức. 🛠️';
+    const message = `${quote}\n Chúc mọi người có một ngày làm việc hiệu quả!`;
+    sendMessage(message);
 });
 
-// 13h30
-cron.schedule('30 13 * * *', () => {
-    sendMessage("Mọi người nhớ làm việc cẩn thận, tỉ mỉ, test kĩ những task mình làm nhé 🚀`");
+// 13:30 chiều, từ thứ 2 đến thứ 6
+cron.schedule('30 13 * * 1-5', () => {
+    sendMessage("Hiện tại ưu tiên về chất lượng code + task, không yêu cầu về tốc độ phải nhanh. Mọi người nhớ làm việc cẩn thận, tỉ mỉ, test kĩ những task mình làm.  🚀");
 });
 
-// 17h15
-cron.schedule('15 17 * * *', () => {
-    sendMessage("Anh em nhớ báo cáo tiến độ hàng ngày nha 🚀`,");
+// 17:20 chiều, từ thứ 2 đến thứ 6
+cron.schedule('20 17 * * 1-5', () => {
+    sendMessage("Anh em nhớ báo cáo tiến độ hàng ngày nha 🚀\n📌 Link báo cáo: <https://docs.google.com/spreadsheets/d/1qM2UDT8pRcPFS-reqe4-WU3_sVsRQ-LPKc66huIAKag/edit?gid=0#gid=0>");
 });
 
 console.log('Slack bot started, waiting for the next scheduled time...');
