@@ -1,4 +1,4 @@
-export const quotes = [
+const quotes = [
     "Không có việc gì khó nếu chúng ta cùng nhau chia sẻ và hỗ trợ nhau. 🤝",
     "Sự thành công không đến từ sự hoàn hảo, mà từ sự kiên trì, nỗ lực và học hỏi từ thất bại. 💪",
     "Hãy nhớ rằng mục tiêu lớn nhất chỉ có thể đạt được bằng cách bắt đầu từ những bước nhỏ nhất. 🏁",
@@ -33,3 +33,5 @@ export const quotes = [
     "Không có gì là không thể nếu bạn kiên trì và quyết tâm theo đuổi mục tiêu của mình. 🌈",
     "Mỗi ngày là một cơ hội mới để thay đổi, để trưởng thành và để thành công. ⏳"
 ];
+
+module.exports = { quotes };
