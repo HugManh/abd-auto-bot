@@ -39,8 +39,12 @@ cron.schedule('30 13 * * 1-5', () => {
 });
 
 // 17:20 chiều, từ thứ 2 đến thứ 6
-cron.schedule('20 17 * * 1-5', () => {
-    sendMessage("Anh em nhớ báo cáo tiến độ hàng ngày nha 🚀\n📌 Link báo cáo: <https://docs.google.com/spreadsheets/d/1qM2UDT8pRcPFS-reqe4-WU3_sVsRQ-LPKc66huIAKag/edit?gid=0#gid=0>");
-});
+// cron.schedule('20 17 * * 1-5', () => {
+//     sendMessage("Anh em nhớ báo cáo tiến độ hàng ngày nha 🚀\n📌 Link báo cáo: <https://docs.google.com/spreadsheets/d/1qM2UDT8pRcPFS-reqe4-WU3_sVsRQ-LPKc66huIAKag/edit?gid=0#gid=0>");
+// });
 
+// 15:55 chiều, chỉ thứ 6
+cron.schedule('55 15 * * 5', () => {
+    sendMessage("Mọi người chuẩn bị vào họp team lúc 5h nhé");
+});
 console.log('Slack bot started, waiting for the next scheduled time...');
