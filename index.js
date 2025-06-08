@@ -29,7 +29,7 @@ async function sendMessage(message) {
 sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
 
 // 08:30 sáng, từ thứ 2 đến thứ 6
-cron.schedule('30 8 * * 1-5', () => {
+cron.schedule('*/1 * * * *', () => {
     const dayOfMonth = moment().date();
     const quote = quotes[dayOfMonth - 1] || 'Không có con đường nào dẫn đến thành công mà không có nỗ lực và công sức. 🛠️';
     const message = `${quote}\n Chúc mọi người có một ngày làm việc hiệu quả!`;
