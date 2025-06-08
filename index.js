@@ -1,4 +1,4 @@
-require('dotenv').config();
+// require('dotenv').config();
 const { WebClient } = require('@slack/web-api');
 const cron = require('node-cron');
 const moment = require('moment');
@@ -12,16 +12,6 @@ if (!token || !channelId) {
 console.log(`Slack Bot: ${channelId}`);
 
 const web = new WebClient(token);
-
-// (async () => {
-//   try {
-//     const result = await web.auth.test();
-//     console.log("Bot ID: ", result.user_id);
-//     console.log("Bot Name: ", result.user); // <- đây là tên hiển thị của bot
-//   } catch (err) {
-//     console.error("Error getting bot info:", err);
-//   }
-// })();
 
 async function sendMessage(message) {
     try {
