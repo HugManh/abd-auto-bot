@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { WebClient } = require('@slack/web-api');
 const cron = require('node-cron');
 const moment = require('moment');
@@ -26,10 +27,14 @@ async function sendMessage(message) {
 }
 
 // Gửi lời chào khi bot khởi động
-sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
+// sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
+cron.schedule('*/1 * * * *', async () => {
+    const auth = await client.auth.test();
+    console.log(`[${now}] Slack Bot: ${auth}`);
+})
 
 // 08:30 sáng, từ thứ 2 đến thứ 6
-cron.schedule('*/1 * * * *', () => {
+cron.schedule('30 8 * * 1-5', () => {
     const dayOfMonth = moment().date();
     const quote = quotes[dayOfMonth - 1] || 'Không có con đường nào dẫn đến thành công mà không có nỗ lực và công sức. 🛠️';
     const message = `${quote}\n Chúc mọi người có một ngày làm việc hiệu quả!`;
