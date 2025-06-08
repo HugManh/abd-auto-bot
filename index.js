@@ -6,19 +6,21 @@ const { quotes } = require('./quotes');
 
 const token = process.env.SLACK_BOT_TOKEN;
 const channelId = process.env.SLACK_CHANNEL_ID;
+if (!token || !channelId) {
+  console.error("Missing SLACK_BOT_TOKEN or SLACK_CHANNEL_ID in .env");
 console.log(`Slack Bot: ${channelId}`);
 
 const web = new WebClient(token);
 
-(async () => {
-  try {
-    const result = await web.auth.test();
-    console.log("Bot ID: ", result.user_id);
-    console.log("Bot Name: ", result.user); // <- đây là tên hiển thị của bot
-  } catch (err) {
-    console.error("Error getting bot info:", err);
-  }
-})();
+// (async () => {
+//   try {
+//     const result = await web.auth.test();
+//     console.log("Bot ID: ", result.user_id);
+//     console.log("Bot Name: ", result.user); // <- đây là tên hiển thị của bot
+//   } catch (err) {
+//     console.error("Error getting bot info:", err);
+//   }
+// })();
 
 async function sendMessage(message) {
     try {
