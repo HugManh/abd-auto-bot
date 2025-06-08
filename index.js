@@ -1,4 +1,3 @@
-// require('dotenv').config();
 const { WebClient } = require('@slack/web-api');
 const cron = require('node-cron');
 const moment = require('moment');
