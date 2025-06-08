@@ -6,8 +6,19 @@ const { quotes } = require('./quotes');
 
 const token = process.env.SLACK_BOT_TOKEN;
 const channelId = process.env.SLACK_CHANNEL_ID;
+console.log(`Slack Bot: ${channelId}`);
 
 const web = new WebClient(token);
+
+(async () => {
+  try {
+    const result = await web.auth.test();
+    console.log("Bot ID: ", result.user_id);
+    console.log("Bot Name: ", result.user); // <- đây là tên hiển thị của bot
+  } catch (err) {
+    console.error("Error getting bot info:", err);
+  }
+})();
 
 async function sendMessage(message) {
     try {
@@ -16,7 +27,7 @@ async function sendMessage(message) {
             channel: channelId,
             text: message,
         });
-        console.log(`[${now}] Channel ${result.channel} Message sent:`, result.ts);
+        console.log(`[${now}] Channel: ${result.channel} Timestamp: ${result.ts});
     } catch (error) {
         console.error('Error sending message:', error);
     }
