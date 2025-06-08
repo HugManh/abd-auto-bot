@@ -16,14 +16,14 @@ async function sendMessage(message) {
             channel: channelId,
             text: message,
         });
-        console.log(`[${now}] Message sent:`, result.ts);
+        console.log(`[${now}] Channel ${result.channel} Message sent:`, result.ts);
     } catch (error) {
         console.error('Error sending message:', error);
     }
 }
 
 // Gửi lời chào khi bot khởi động
-// sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
+sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
 
 // 08:30 sáng, từ thứ 2 đến thứ 6
 cron.schedule('30 8 * * 1-5', () => {
