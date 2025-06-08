@@ -27,7 +27,7 @@ async function sendMessage(message) {
             channel: channelId,
             text: message,
         });
-        console.log(`[${now}] Channel: ${result.channel} Timestamp: ${result.ts});
+        console.log(`[${now}] Channel: ${result.channel} Timestamp: ${result.ts}`);
     } catch (error) {
         console.error('Error sending message:', error);
     }
