@@ -29,7 +29,7 @@ async function sendMessage(message) {
 async function botInfo() {
     const now = moment().format('YYYY-MM-DD HH:mm:ss');
     try {
-        const auth = await client.auth.test();
+        const auth = await web.auth.test();
         console.log(`[${now}] Slack Bot Info:`, {
             user_id: auth.user_id,
             user: auth.user,
