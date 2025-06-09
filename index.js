@@ -27,11 +27,25 @@ async function sendMessage(message) {
     }
 }
 
+async function botInfo() {
+    const now = moment().format('YYYY-MM-DD HH:mm:ss');
+    try {
+        const auth = await web.auth.test();
+        console.log(`[${now}] Slack Bot Info:`, {
+            user_id: auth.user_id,
+            user: auth.user,
+            team: auth.team,
+            url: auth.url
+        });
+    } catch (error) {
+        console.error(`[${now}] Error Slack Bot:`, error);
+    }
+}
+
 // Gửi lời chào khi bot khởi động
 // sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
-cron.schedule('*/1 * * * *', async () => {
-    const auth = await client.auth.test();
-    console.log(`[${now}] Slack Bot: ${auth}`);
+cron.schedule('*/1 * * * *', () => {
+    botInfo()
 }, { scheduled: true, timezone: timezone })
 
 // 08:30 sáng, từ thứ 2 đến thứ 6
@@ -57,3 +71,4 @@ cron.schedule('55 15 * * 5', () => {
     sendMessage("Mọi người chuẩn bị vào họp team lúc 5h nhé");
 }, { scheduled: true, timezone: timezone });
 console.log('Slack bot started, waiting for the next scheduled time...');
+botInfo()
