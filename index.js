@@ -13,22 +13,23 @@ console.log(`Slack Bot: ${channelId}`);
 
 const web = new WebClient(token);
 const timezone = "Asia/Ho_Chi_Minh"
+const timeformat = "YYYY-MM-DD HH:mm:ss [GMT]Z"
 
 async function sendMessage(message) {
+    const now = moment().format(timeformat);
     try {
-        const now = moment().format('YYYY-MM-DD HH:mm:ss');
         const result = await web.chat.postMessage({
             channel: channelId,
             text: message,
         });
         console.log(`[${now}] Channel: ${result.channel} Timestamp: ${result.ts}`);
     } catch (error) {
-        console.error('Error sending message:', error);
+        console.error(`[${now}] Error sending message:`, error);
     }
 }
 
 async function botInfo() {
-    const now = moment().format('YYYY-MM-DD HH:mm:ss');
+    const now = moment().format(timeformat);
     try {
         const auth = await web.auth.test();
         console.log(`[${now}] Slack Bot Info:`, {
@@ -44,7 +45,9 @@ async function botInfo() {
 
 // Gửi lời chào khi bot khởi động
 // sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
-cron.schedule('*/1 * * * *', () => {
+
+// Railway sleep. If no packets are sent from the service for over 10 minutes, the service is considered inactive.
+cron.schedule('*/9 * * * *', () => {
     botInfo()
 }, { scheduled: true, timezone: timezone })
 
