@@ -47,7 +47,7 @@ async function botInfo() {
 // sendMessage("Chúc anh em một ngày làm việc hiệu quả! 🚀");
 
 // Railway sleep. If no packets are sent from the service for over 10 minutes, the service is considered inactive.
-cron.schedule('*/9 * * * *', () => {
+cron.schedule('*/5 * * * *', () => {
     botInfo()
 }, { scheduled: true, timezone: timezone })
 
